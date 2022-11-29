@@ -119,6 +119,15 @@ class User:
         return cls(result[0])
 
     @classmethod
+    def get_one_for_login(cls, data):
+        query = """
+        SELECT * 
+        FROM users
+        WHERE email = %(email)s
+        """
+        return connectToMySQL(db).query_db(query, data)
+
+    @classmethod
     def update_user(cls, data):
         query = """
         UPDATE users 
@@ -133,3 +142,4 @@ class User:
         DELETE FROM users 
         WHERE id = %(id)s;
         """
+        return connectToMySQL(db).query_db(query, data)
