@@ -68,7 +68,68 @@ class User:
         is_valid = True
         is_valid_email = True
 
-    if len(form_data.get('email')) <= 0:
-        flash()
+        if len(form_data.get('email')) <= 0:
+            flash("A valid email is required!", 'login')
+            is_valid = False
+            is_valid_email = False
 
-    return is_valid
+        if not EMAIL_REGEX.match(form_data.get('email')):
+            flash("The email you entered is in the wrong format!")
+            is_valid = False
+            is_valid_email = False
+        
+        if is_valid_email:
+            query = """
+            SELECT * 
+            FROM users 
+            WHERE email = %(email)s;
+            """
+            result = connectToMySQL(db).query_db(query, form_data)
+            if not bcrypt.check_password_hash(result[0]['password'], form_data.get('password')):
+                flash('Invalid password entered!, Try Again', 'login')
+                is_valid = False
+
+        return is_valid
+
+    @classmethod
+    def get_all(cls, data):
+        query = """
+        SELECT * FROM users;
+        """
+        return connectToMySQL(db).query_db(query, data)
+
+    @classmethod
+    def save(cls, data):
+        query = """
+        INSERT INTO users (first_name, last_name, email, password, created_at, updated_at) 
+        VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s, NOW(), NOW());
+        """
+        return connectToMySQL(db).query_db(query, data)
+
+    @classmethod
+    def get_user_by_email(cls, data:dict):
+        query = """
+        SELECT * 
+        FROM users 
+        WHERE email = %(email)s;
+        """
+        result = connectToMySQL(db).query_db(query, data)
+        if len(result) < 1: 
+            return False
+        return cls(result[0])
+
+    @classmethod
+    def update_user(cls, data):
+        query = """
+        UPDATE users 
+        SET first_name = %(first_name)s, last_name = %(last_name)s, email = %(email)s, password = %(password)s
+        WHERE id = %(id)s;
+        """
+        return connectToMySQL(db).query_db(query, data)
+
+    @classmethod
+    def delete_user(cls, data):
+        query = """
+        DELETE FROM users 
+        WHERE id = %(id)s;
+        """
