@@ -62,3 +62,13 @@ class User:
 
 
         return is_valid
+
+    @staticmethod
+    def validate_user_login(form_data:dict) -> bool:
+        is_valid = True
+        is_valid_email = True
+
+    if len(form_data.get('email')) <= 0:
+        flash()
+
+    return is_valid
