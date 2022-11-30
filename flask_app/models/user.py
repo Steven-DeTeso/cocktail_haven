@@ -74,7 +74,7 @@ class User:
             is_valid_email = False
 
         if not EMAIL_REGEX.match(form_data.get('email')):
-            flash("The email you entered is in the wrong format!")
+            flash("The email you entered is in the wrong format!", 'login')
             is_valid = False
             is_valid_email = False
         

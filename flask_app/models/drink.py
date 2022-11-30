@@ -30,6 +30,8 @@ class Drink:
             # not sure if this is correct way to do this with this data type in mysql
             is_valid = False
 
+        return is_valid
+
     @classmethod
     def save(cls, data):
         query = """
