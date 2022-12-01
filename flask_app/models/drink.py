@@ -86,7 +86,7 @@ class Drink:
     def update_drinks(cls, data):
         query = """
         UPDATE drinks
-        SET spirit = %(spirit)s, ingredient = %(ingredient)s, picture = %(picture)s, updated_at = NOW()
+        SET name = %(name)s, spirit = %(spirit)s, ingredient = %(ingredient)s, instruction = %(instruction)s, updated_at = NOW()
         WHERE id = %(id)s;
         """
         return connectToMySQL(db).query_db(query, data)
