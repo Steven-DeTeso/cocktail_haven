@@ -8,6 +8,10 @@ from flask import render_template, request, redirect, session
 def r_home_page():
     return render_template('login.html')
 
+@app.route('/register')
+def r_register_page():
+    return render_template('register.html')
+
 @app.route('/register/user', methods=['POST'])
 def f_register_user():
     if User.validate_user_register(request.form):
@@ -21,7 +25,7 @@ def f_register_user():
         user_in_db = User.get_one_for_login(data)
         session['user_id'] = user_in_db[0] #steps in to just grab dict:object from list,hench [0]
         return redirect('/dashboard')
-    return redirect('/')
+    return redirect('/register')
 
 @app.route('/login/user', methods = ['POST'])
 def f_login_user():

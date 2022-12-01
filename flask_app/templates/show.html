@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <title>One Drink Page:</title>
+</head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
+    <h1 class="">Cocktail Haven</h1>
+    <a href="/log_out">Logout</a>
+</nav>
+<body>
+    <div class="container">
+        <h2>{{drink.name}}</h2>
+        <p>{{drink.spirit}}</p>
+        <p>{{drink.ingredient}}</p>
+        <p>{{drink.instruction}}</p>
+        <a class="btn btn-primary" href="/dashboard">Dashboard</a>
+    </div>
+</body>
+</html>

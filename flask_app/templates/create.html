@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <title>Create Drink</title>
+</head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
+    <h1 class="">Cocktail Haven</h1>
+    <a href="/log_out">Logout</a>
+</nav>
+<body class="container">
+    <div>
+        <form action="/create" method="POST">
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" name="name" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="spirit" class="form-label">Main Spirit:</label>
+                    <select class="form-select" name="spirit">
+                        <option selected disabled value="0">Please select one:</option>
+                        <option value="Vodka">Vodka</option>
+                        <option value="Gin">Gin</option>
+                        <option value="Whiskey-Rye">Whiskey-Rye</option>
+                        <option value="Whiskey-Bourbon">Whiskey-Bourbon</option>
+                        <option value="Whiskey-Other">Whiskey-Other</option>
+                        <option value="Tequila">Tequila</option>
+                        <option value="Mezcal">Mezcal</option>
+                        <option value="Rum">Rum</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="ingredients">Ingredients and Measurements:</label>
+                    <textarea name="ingredient" height="100px" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="instruction">Instructions:</label>
+                    <textarea name="instruction" height="100px" class="form-control"></textarea>
+                </div>
+            </div>
+            <input type="hidden" name="user_id" value="{{session['user_id']['id']}}">
+            <button type="submit" class="btn btn-success mt-2">Create</button>
+        </form>
+    </div>
+</body>
+</html>

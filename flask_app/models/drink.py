@@ -6,9 +6,10 @@ db = 'cocktail_haven'
 class Drink:
     def __init__(self, data):
         self.id = data['id']
+        self.name = data['name']
         self.spirit = data['spirit']
         self.ingredient = data['ingredient']
-        self.picture = data['picture']
+        self.instruction = data['instruction']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.user = None
@@ -17,17 +18,19 @@ class Drink:
     def validate_drink(form_data:dict):
         is_valid = True
 
+        if len(form_data.get('name')) <= 0:
+            flash("Please name your new cocktail", 'drink')
+
         if form_data.get('spirit') == None:
             flash("Please choose a main spirit of this cocktail", 'drink')
             is_valid = False
 
-        if len(form_data.get('ingredient')) <= 0:
+        if len(str(form_data.get('ingredient'))) <= 0:
             flash("Please list all the ingredient's needed for this cocktail", 'drink')
             is_valid = False
 
-        if form_data.get('picture') == None:
-            flash("Please upload a picture of this drink!", 'drink')
-            # not sure if this is correct way to do this with this data type in mysql
+        if len(str(form_data.get('instruction'))) <= 0:
+            flash("Please write out the instructions for mixing this cocktail", 'drink')
             is_valid = False
 
         return is_valid
@@ -35,9 +38,10 @@ class Drink:
     @classmethod
     def save(cls, data):
         query = """
-        INSERT INTO drinks (spirit, ingredient, picture, created_at, updated_at, user_id)
-        VALUES (%(spirit)s, %(ingredient)s, %(picture)s, NOW(), NOW(), %(user_id)s)
+        INSERT INTO drinks (name, spirit, ingredient, instruction, created_at, updated_at, user_id)
+        VALUES (%(name)s, %(spirit)s, %(ingredient)s, %(instruction)s, NOW(), NOW(), %(user_id)s)
         """
+        print(query)
         return connectToMySQL(db).query_db(query, data)
 
     @classmethod

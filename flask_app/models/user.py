@@ -86,7 +86,7 @@ class User:
             """
             result = connectToMySQL(db).query_db(query, form_data)
             if not bcrypt.check_password_hash(result[0]['password'], form_data.get('password')):
-                flash('Invalid password entered!, Try Again', 'login')
+                flash('Invalid password entered! Try Again', 'login')
                 is_valid = False
 
         return is_valid
