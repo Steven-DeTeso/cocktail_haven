@@ -15,27 +15,25 @@
     <div class="top-div">
         <a class="btn btn-primary" href="/create/drink">Add a Cocktail</a>
     </div>
-    <div class="d-flex flex-wrap">
-        <table class="table table-hover border">
-            <tbody>
-                {% for drink in drinks %}
-            <tr>
-                <td>
-                    <p>{{drink.name}}</p>
-                    <p>Created by: {{drink.user.first_name}} {{drink.user.last_name}}</p>
-                    <p>{{drink.ingredient}}</p>
-                    <p>{{drink.instruction}}</p>
-                </td>
-                <td>
-                    <a class="btn btn-secondary" href="/show/{{drink.id}}">View</a> 
+    <div class="col-sm-12">
+        <div class="col-6 mx-auto">
+            {% for drink in drinks %}
+            <div class="card">
+                <h3 class="card-header">{{drink.name}}</h3>
+                <div class="card-body">
+                    <h4 class="card-title">Creator: {{drink.user.first_name}} {{drink.user.last_name}}</h4>
+                    <p class="card-text">Ingredients needed to mix:</p>
+                    <p class="card-text">{{drink.ingredient}}</p>
+                    <p class="card-text">Mixing instructions:</p>
+                    <p class="card-text">{{drink.instruction}}</p>
+                    <a href="/show/{{drink.id}}" class="btn btn-primary">Go to {{drink.name}} page.</a>
                     {% if drink.user.id == session['user_id']['id'] %}
                     <a class="btn btn-secondary" href="/edit/{{drink.id}}">Edit</a> <a class="btn btn-secondary" href="/delete/{{drink.id}}">Delete</a>
                     {% endif %}
-                </td>
-            </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 </body>
 </html>
