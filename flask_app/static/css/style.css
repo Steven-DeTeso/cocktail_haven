@@ -1,0 +1,39 @@
+/* all css */
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.main-section {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-content: flex-start;
+        align-items: flex-start;
+        }
+
+.container {
+    height: 2000px;
+    background-image: url("../imgs/bg_bar.jpg");
+}
+
+.card {
+        margin: 15px 15px;
+        height: fit-content;
+        width: 400px;
+        }
+
+.createDrink {
+    background-color: aliceblue;
+    border: 2px solid black;
+    width: 600px;
+    padding: 25px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+textarea {
+    height: 150px;
+}

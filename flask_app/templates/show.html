@@ -5,19 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>One Drink Page:</title>
 </head>
-<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
-    <h1 class="">Cocktail Haven</h1>
-    <a href="/log_out">Logout</a>
-</nav>
-<body>
-    <div class="container">
+<body class="container">
+    <nav class="navbar navbar-expand-xl navbar-light bg-light">
+        <div class="container-fluid">
+        <a class="navbar-brand" href="/dashboard">Cocktail Haven</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarBasic" aria-controls="navbarBasic" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse show" id="navbarBasic">
+                <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/create/drink">Add a Cocktail</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/dashboard" class="nav-link active" aria-current="page" >Back to the Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/log_out">Logout</a>
+                </li>
+                </ul>
+                <!-- if wanting to use this search form, need to write a route -->
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="createDrink">
         <h2>{{drink.name}}</h2>
         <p>{{drink.spirit}}</p>
         <p>{{drink.ingredient}}</p>
         <p>{{drink.instruction}}</p>
-        <a class="btn btn-primary" href="/dashboard">Dashboard</a>
     </div>
 </body>
 </html>
