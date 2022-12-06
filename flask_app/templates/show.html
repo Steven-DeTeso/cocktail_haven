@@ -36,10 +36,11 @@
         </div>
     </nav>
     <div class="createDrink">
-        <h2>{{drink.name}}</h2>
-        <p>{{drink.spirit}}</p>
-        <p>{{drink.ingredient}}</p>
-        <p>{{drink.instruction}}</p>
+        <h2>{{drink.name}} Cocktail</h2>
+        <p>Main Spirit: {{drink.spirit}}</p>
+        <p>Ingredients: {{drink.ingredient}}</p>
+        <p>Mixing Instructions: {{drink.instruction}}</p>
+        <a class="btn btn-success" href="/edit/{{drink.id}}">Edit this Drink</a>
     </div>
 </body>
 </html>

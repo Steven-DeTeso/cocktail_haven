@@ -42,3 +42,13 @@ def f_process_drink_update():
         return redirect(url_for('r_edit_drink', id = request.form['id']))
     Drink.update_drinks(request.form)
     return redirect('/dashboard')
+
+# This route doesn't work right now - trying to figure it out. 
+@app.route('/filter', methods=['POST'])
+def f_filter_drinks():
+    if 'user_id' not in session:
+        return redirect('/log_out')
+    print(request.form)
+    data = Drink.filter_drinks(request.form)
+    print(data)
+    return redirect(url_for('r_dashboard_filter', data = data))

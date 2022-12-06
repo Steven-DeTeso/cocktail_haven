@@ -98,3 +98,19 @@ class Drink:
         WHERE id = %(id)s;
         """
         return connectToMySQL(db).query_db(query, data)
+
+# this classmethod works but I'm having trouble with the rest of it. 
+    @classmethod
+    def filter_drinks(cls, data):
+        query = """
+        SELECT * 
+        FROM drinks
+        WHERE drinks.spirit = %(spirit)s;
+        """
+        results = connectToMySQL(db).query_db(query, data)
+        print(results)
+        all_drinks = []
+        for drinks in results:
+            one_drink = cls(drinks)
+            all_drinks.append(one_drink)
+        return all_drinks
