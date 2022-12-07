@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Register page</title>
 </head>
-<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
-    <h1 class="">Welcome to the Cocktail Haven</h1>
-    <a class="btn btn-primary" href="/">Back to Login</a>
+<nav class="navbar navbar-expand-xl navbar-light bg-light">
+    <a class="navbar-brand login-nav">Welcome to the Cocktail Haven</a>
 </nav>
 <body>
     <div class="row justify-content-around">
@@ -52,6 +52,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Register</button>
             </form>
+            <a class="btn btn-outline-success" href="/">Back to Login</a>
         </div>
     </div>
 </body>

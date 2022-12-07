@@ -5,6 +5,44 @@
     margin: 0px;
 }
 
+@font-face {
+    font-family: Corinthia;
+    src: url(../fonts/Corinthia-Bold.ttf);
+}
+
+.navbar-brand {
+    font-family: Corinthia;
+    font-size: 5em;
+}
+
+nav {
+    background: #4AC29A;
+    background: -webkit-linear-gradient(to right, #BDFFF3, #4AC29A);
+    background: linear-gradient(to right, #BDFFF3, #4AC29A); 
+    border-radius: 10px;
+}
+
+.login-nav{
+    margin: auto;
+}
+
+.nav-link{
+    font-size: larger;
+}
+
+.description{
+    width: 600px;
+    margin: auto;
+    background-color: ghostwhite;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+#about {
+    text-align: center;
+}
+
 .main-section {
         display: flex;
         flex-direction: row;
@@ -20,10 +58,20 @@
 }
 
 .card {
-        margin: 15px 15px;
-        height: fit-content;
-        width: 400px;
-        }
+    margin: 15px 15px;
+    height: fit-content;
+    width: 400px;
+}
+
+.card-header{
+    text-align: center;
+    background-color: #ffb53d;
+}
+
+.card-header > a {
+    text-decoration: none;
+    color: black;
+}
 
 .createDrink {
     background-color: aliceblue;

@@ -32,23 +32,28 @@
         </div>
         </div>
     </nav>
-        <div class="main-section">
+    <div class="description">
+        <h1 id="about">About this site</h1>
+        <p>Welcome to the Cocktail Haven website! This is a database of cocktails that have been uploaded by our users. To add your own cocktail to the database, use the "Add a Cocktail" button in the navigation bar at the top of the page.</p>
+        <p>Click on the name of the cocktail in the card header below to see all the ingredients and mixing instructions for eaach drink.</p>
+        <p>You can also filter the cocktails by main spirit with the search bar if you like. The options are: etc...</p>
+    </div>
+    <div class="main-section">
             {% for drink in drinks %}
             <div class="card col-md-4 col-lg-4">
-                <h3 class="card-header">{{drink.name}}</h3>
+                <h3 class="card-header"><a href="/show/{{drink.id}}">{{drink.name}}</a></h3>
                 <div class="card-body">
                     <p class="card-text"><strong>Ingredients and Measurements:</strong></p>
                     <p class="card-text">{{drink.ingredient}}</p>
                     <p class="card-text"><strong>Mixing instructions:</strong></p>
                     <p class="card-text">{{drink.instruction}}</p>
                     <h4 class="card-title">Uploaded by: {{drink.user.first_name}} {{drink.user.last_name}}</h4>
-                    <a href="/show/{{drink.id}}" class="btn btn-primary">Go to {{drink.name}} page</a>
                     {% if drink.user.id == session['user_id']['id'] %}
                     <a class="btn btn-secondary" href="/edit/{{drink.id}}">Edit</a> <a class="btn btn-danger" href="/delete/{{drink.id}}">Delete</a>
                     {% endif %}
                 </div>
             </div>
             {% endfor %}
-        </div>
+    </div>
 </body>
 </html>
