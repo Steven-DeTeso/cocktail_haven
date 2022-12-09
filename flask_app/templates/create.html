@@ -36,6 +36,15 @@
 </nav>
 <body class="container">
     <div class="createDrink">
+        {% with messages = get_flashed_messages(category_filter=['drink']) %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li class="error">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
         <form action="/create" method="POST">
             <div class="row">
                 <div class="col-md-12">
@@ -58,6 +67,12 @@
                         <option value="Rum">Rum</option>
                         <option value="Brandy">Brandy</option>
                     </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="brief_description">Brief Description: one to two sentences about this cocktail:</label>
+                    <textarea name="brief_description" class="form-control"></textarea>
                 </div>
             </div>
             <div class="row">

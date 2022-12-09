@@ -37,9 +37,9 @@
     </nav>
     <div class="createDrink">
         <h2>{{drink.name}} Cocktail</h2>
-        <p>Main Spirit: {{drink.spirit}}</p>
-        <p>Ingredients: {{drink.ingredient}}</p>
-        <p>Mixing Instructions: {{drink.instruction}}</p>
+        <p><strong>Spirit:</strong> {{drink.spirit}}</p>
+        <p><strong>Ingredients:</strong> {{drink.ingredient}}</p>
+        <p><strong>Mixing Instructions:</strong> {{drink.instruction}}</p>
         {% if drink.user.id == session['user_id']['id'] %}
         <a class="btn btn-success" href="/edit/{{drink.id}}">Edit this Drink</a>
         {% endif %}

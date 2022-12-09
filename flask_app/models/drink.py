@@ -8,6 +8,7 @@ class Drink:
         self.id = data['id']
         self.name = data['name']
         self.spirit = data['spirit']
+        self.brief_description = data['brief_description']
         self.ingredient = data['ingredient']
         self.instruction = data['instruction']
         self.created_at = data['created_at']
@@ -25,6 +26,10 @@ class Drink:
             flash("Please choose a main spirit of this cocktail", 'drink')
             is_valid = False
 
+        if len(str(form_data.get('brief_description'))) <= 0: 
+            flash("Please write out a one or two sentence brief description of this cocktail!", 'drink')
+            is_valid = False
+
         if len(str(form_data.get('ingredient'))) <= 0:
             flash("Please list all the ingredient's needed for this cocktail", 'drink')
             is_valid = False
@@ -38,8 +43,8 @@ class Drink:
     @classmethod
     def save(cls, data):
         query = """
-        INSERT INTO drinks (name, spirit, ingredient, instruction, created_at, updated_at, user_id)
-        VALUES (%(name)s, %(spirit)s, %(ingredient)s, %(instruction)s, NOW(), NOW(), %(user_id)s)
+        INSERT INTO drinks (name, spirit, brief_description, ingredient, instruction, created_at, updated_at, user_id)
+        VALUES (%(name)s, %(spirit)s, %(brief_description)s, %(ingredient)s, %(instruction)s, NOW(), NOW(), %(user_id)s)
         """
         print(query)
         return connectToMySQL(db).query_db(query, data)
@@ -86,7 +91,7 @@ class Drink:
     def update_drinks(cls, data):
         query = """
         UPDATE drinks
-        SET name = %(name)s, spirit = %(spirit)s, ingredient = %(ingredient)s, instruction = %(instruction)s, updated_at = NOW()
+        SET name = %(name)s, spirit = %(spirit)s, brief_description = %(brief_description)s, ingredient = %(ingredient)s, instruction = %(instruction)s, updated_at = NOW()
         WHERE id = %(id)s;
         """
         return connectToMySQL(db).query_db(query, data)

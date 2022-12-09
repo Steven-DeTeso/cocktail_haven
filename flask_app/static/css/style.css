@@ -5,6 +5,38 @@
     margin: 0px;
 }
 
+.login, .register{
+    margin-top: 30px;
+    justify-content: space-between;
+    background-color: white;
+    padding: 20px;
+    border: solid 2px black;
+    border-radius: 5%;
+}
+
+.login > ul, .register > ul {
+    list-style: none;
+}
+
+.login > li, .register > li {
+    margin-bottom: 5px;
+    margin-left: -25px;
+    border-radius: 20%;
+    text-align: center;
+}
+
+.error{
+    font-size: larger;
+    font-weight: bold;
+    background-color: #f7d6d9;
+}
+
+.click {
+    font-size: large;
+    font-weight: bold;
+    color: rgb(255, 0, 0)
+}
+
 @font-face {
     font-family: Corinthia;
     src: url(../fonts/Corinthia-Bold.ttf);
@@ -79,7 +111,7 @@ nav {
     width: 600px;
     padding: 25px;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 textarea {

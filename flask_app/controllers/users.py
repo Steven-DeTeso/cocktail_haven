@@ -49,6 +49,7 @@ def r_dashboard():
 def r_dashboard_filter(data:list):
     if 'user_id' not in session:
         return redirect('/log_out')
+    print("filter drinks", data)
     return render_template('dashboard.html', drinks = data)
 
 @app.route('/log_out')
