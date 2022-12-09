@@ -44,13 +44,6 @@ def r_dashboard():
         return redirect('/log_out')
     return render_template('dashboard.html', user = session['user_id'], drinks = Drink.get_all_drinks())
 
-# This app route doesn't work at the moment. 
-@app.route('/dashboard-filter')
-def r_dashboard_filter(data:list):
-    if 'user_id' not in session:
-        return redirect('/log_out')
-    print("filter drinks", data)
-    return render_template('dashboard.html', drinks = data)
 
 @app.route('/log_out')
 def rd_log_out():

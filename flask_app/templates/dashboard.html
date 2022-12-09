@@ -25,8 +25,8 @@
             </li>
             </ul>
             <!-- if wanting to use this search form, need to write a route -->
-            <form action="/filter" method="POST" class="d-flex">
-                <input class="form-control me-2" type="text" name="spirit" placeholder="Search" aria-label="Search">
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" oninput="liveSearch()" id="searchbox" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
@@ -55,5 +55,6 @@
             </div>
             {% endfor %}
     </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

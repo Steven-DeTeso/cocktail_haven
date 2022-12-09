@@ -14,6 +14,11 @@
     border-radius: 5%;
 }
 
+#login-reg{
+    background-image: url("../imgs/back_bar.jpg");
+    background-size: cover;
+}
+
 .login > ul, .register > ul {
     list-style: none;
 }
@@ -114,10 +119,19 @@ nav {
     margin-top: 50px;
 }
 
+.createDrink > #cocktail-name {
+    text-align: center;
+    background-color: #ffb53d;
+}
+
 textarea {
     height: 150px;
 }
 
 .card-text {
     margin: 5px;
+}
+
+.is-hidden { 
+    display: none; 
 }
