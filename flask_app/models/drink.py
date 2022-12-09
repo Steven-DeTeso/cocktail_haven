@@ -19,22 +19,23 @@ class Drink:
     def validate_drink(form_data:dict):
         is_valid = True
 
-        if len(form_data.get('name')) < 0:
+        if len(str(form_data.get('name'))) <= 1:
             flash("Please name your new cocktail", 'drink')
+            is_valid = False
 
         if form_data.get('spirit') == None:
             flash("Please choose a main spirit of this cocktail", 'drink')
             is_valid = False
 
-        if len(str(form_data.get('brief_description'))) <= 0: 
-            flash("Please write out a one or two sentence brief description of this cocktail!", 'drink')
+        if len(str(form_data.get('brief_description'))) <= 1: 
+            flash("Please write out a one or two sentence brief description of this cocktail", 'drink')
             is_valid = False
 
-        if len(str(form_data.get('ingredient'))) <= 0:
+        if len(str(form_data.get('ingredient'))) <= 1:
             flash("Please list all the ingredient's needed for this cocktail", 'drink')
             is_valid = False
 
-        if len(str(form_data.get('instruction'))) <= 0:
+        if len(str(form_data.get('instruction'))) <= 1:
             flash("Please write out the instructions for mixing this cocktail", 'drink')
             is_valid = False
 
@@ -103,3 +104,4 @@ class Drink:
         WHERE id = %(id)s;
         """
         return connectToMySQL(db).query_db(query, data)
+

@@ -19,10 +19,6 @@
     background-size: cover;
 }
 
-.login > ul, .register > ul {
-    list-style: none;
-}
-
 .login > li, .register > li {
     margin-bottom: 5px;
     margin-left: -25px;
@@ -34,6 +30,7 @@
     font-size: larger;
     font-weight: bold;
     background-color: #f7d6d9;
+    list-style: none;
 }
 
 .click {
@@ -68,7 +65,7 @@ nav {
 }
 
 .description{
-    width: 600px;
+    width: 70%;
     margin: auto;
     background-color: ghostwhite;
     padding: 15px;
@@ -87,7 +84,7 @@ nav {
         justify-content: flex-start;
         align-content: flex-start;
         align-items: flex-start;
-        }
+}
 
 .container {
     height: 2000px;
@@ -134,4 +131,8 @@ textarea {
 
 .is-hidden { 
     display: none; 
+}
+
+#searchbox{
+    width: 300px;
 }
