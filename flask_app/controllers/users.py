@@ -73,6 +73,12 @@ def f_rd_user_account_update():
         return redirect('/dashboard')
     return render_template('/user_updated.html')
 
+@app.route('/user/<int:id>')
+def r_user_account(id):
+    data = {
+        'id': id
+    }
+    return render_template('all_user_drinks.html', drinks = Drink.get_all_users_drinks(data))
 
 @app.route('/log_out')
 def rd_log_out():

@@ -68,19 +68,19 @@ class User:
         is_valid = True
 
         if len(form_data.get('first_name')) <= 2: 
-            flash("Please be sure to fill in your first name!", 'register')
+            flash("Please be sure to fill in your first name!", 'update')
             is_valid = False
 
         if len(form_data.get('last_name')) <= 2:
-            flash("Please be sure to fill in your last name!", 'register')
+            flash("Please be sure to fill in your last name!", 'update')
 
 
         if len(form_data.get('password')) < 8:
-            flash("The password you entered isn't long enough, plase make it at least 8 characters!", 'register')
+            flash("The password you entered isn't long enough, plase make it at least 8 characters!", 'update')
             is_valid = False
 
         if form_data.get('password') != form_data.get('confirm_password'):
-            flash("The confirmed password didn't match the password you entered", 'register')
+            flash("The confirmed password didn't match the password you entered", 'update')
             is_valid = False
 
 

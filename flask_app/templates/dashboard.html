@@ -45,7 +45,7 @@
                     <p class="card-text">{{drink.brief_description}}</p>
                     <p class="card-text"><strong>Main Spirit:</strong></p>
                     <p class="card-text">{{drink.spirit}}</p>
-                    <p class="card-title"><em>Uploaded by: {{drink.user.first_name}} {{drink.user.last_name}}</em></p>
+                    <p class="card-title"><em>Uploaded by: <a href="/user/{{drink.user.id}}">{{drink.user.first_name}} {{drink.user.last_name}}</a></em></p>
                     {% if drink.user.id == session['user_id']['id'] %}
                     <a class="btn btn-secondary" href="/edit/{{drink.id}}">Edit</a> <a class="btn btn-danger" href="/delete/{{drink.id}}">Delete</a>
                     {% endif %}

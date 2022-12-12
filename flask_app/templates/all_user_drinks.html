@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <title>Account Page</title>
+    <title>Specific user drinks:</title>
 </head>
 <body class="container">
     <nav class="navbar navbar-expand-xl navbar-light bg-light">
@@ -28,9 +28,8 @@
         </div>
     </nav>
     <div class="description">
-        <h1 id="about"><em>This is the account page for {{user.first_name}} {{user.last_name}}</em></h1>
-        <p id="p">Below you will see a table of all the cocktails that {{user.first_name}} has created!</p>
-        <p id="p"><a href="/account/update">Please click this link here</a> if you'd like to updated your account information!</p>
+        <h1 id="about"><em>This is the account page for {{drinks.first_name}}</em></h1>
+        <p id="p">Below you will see a table of all the cocktails that  has created!</p>
     </div>
     <div>
         <table class="table table-hover table-bordered user-table">
@@ -56,6 +55,6 @@
             </tbody>
         </table>
     </div>
-    
+
 </body>
 </html>

@@ -24,14 +24,11 @@
                         <a class="nav-link" href="/log_out">Logout</a>
                     </li>
                     </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" oninput="liveSearch()" id="searchbox" placeholder="Search" aria-label="Search">
-                    </form>
                 </div>
         </div>
     </nav>
     <div class="description">
-        {% with messages = get_flashed_messages(category_filter=['register']) %}
+        {% with messages = get_flashed_messages(category_filter=['update']) %}
                 {% if messages %}
                     <ul>
                     {% for message in messages %}
