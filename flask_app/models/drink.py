@@ -14,6 +14,7 @@ class Drink:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.user = None
+        self.user_id = None
 
     @staticmethod
     def validate_drink(form_data:dict):
@@ -62,6 +63,7 @@ class Drink:
         result = connectToMySQL(db).query_db(query, data)
         single_drink = cls(result[0])
         single_drink.user = result[0]['first_name'] + ' ' + result[0]['last_name']
+        single_drink.user_id = result[0]['users.id']
         return single_drink
 
     @classmethod

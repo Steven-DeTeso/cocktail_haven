@@ -32,7 +32,10 @@
         <p><strong>Spirit:</strong> {{drink.spirit}}</p>
         <p><strong>Ingredients:</strong> {{drink.ingredient}}</p>
         <p><strong>Mixing Instructions:</strong> {{drink.instruction}}</p>
-        <p><em>Created by: {{drink.user}}</em></p>
+        <p><em>Created by: <a href="/user/{{drink.user_id}}">{{drink.user}}</a></em></p>
+        {% if session['user_id']['id'] == drink.user_id %}
+        <a class="btn btn-warning" href="/edit/{{drink.id}}">Edit</a>
+        {% endif%}
     </div>
 </body>
 </html>

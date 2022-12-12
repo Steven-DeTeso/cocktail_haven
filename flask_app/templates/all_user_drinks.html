@@ -28,8 +28,8 @@
         </div>
     </nav>
     <div class="description">
-        <h1 id="about"><em>This is the account page for {{drinks.first_name}}</em></h1>
-        <p id="p">Below you will see a table of all the cocktails that  has created!</p>
+        <h1 id="about"><em>Here is the cocktail page for {{drinks[0].user.first_name}} {{drinks[0].user.last_name}}!</em></h1>
+        <h4 id="p">Below you will see a table of all the cocktails that {{drinks[0].user.first_name}} has created!</h4>
     </div>
     <div>
         <table class="table table-hover table-bordered user-table">
