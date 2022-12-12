@@ -61,6 +61,7 @@ class Drink:
         """
         result = connectToMySQL(db).query_db(query, data)
         single_drink = cls(result[0])
+        single_drink.user = result[0]['first_name'] + ' ' + result[0]['last_name']
         return single_drink
 
     @classmethod
@@ -73,6 +74,31 @@ class Drink:
         WHERE drinks.user_id = users.id;
         """
         results = connectToMySQL(db).query_db(query)
+        drinks = []
+        for drink in results:
+            one_drink = cls(drink)
+            data = {
+                'id': drink['users.id'],
+                'first_name': drink['first_name'],
+                'last_name': drink['last_name'],
+                'email': drink['email'],
+                'created_at': drink['users.created_at'],
+                'updated_at': drink['users.updated_at']
+            }
+            one_drink.user = User(data)
+            drinks.append(one_drink)
+        return drinks
+
+    @classmethod
+    def get_all_users_drinks(cls, data):
+        query = """
+        SELECT * 
+        FROM drinks 
+        JOIN users 
+        ON users.id = drinks.user_id
+        WHERE users.id = %(id)s;
+        """
+        results = connectToMySQL(db).query_db(query, data)
         drinks = []
         for drink in results:
             one_drink = cls(drink)

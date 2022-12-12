@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Account Page</title>
+</head>
+<body class="container">
+    <nav class="navbar navbar-expand-xl navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/dashboard">Cocktail Haven</a>
+                <div class="collapse navbar-collapse show" id="navbarBasic">
+                    <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/create/drink">Add a Cocktail</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/dashboard" class="nav-link active" aria-current="page" >Back to the Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/log_out">Logout</a>
+                    </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" oninput="liveSearch()" id="searchbox" placeholder="Search" aria-label="Search">
+                    </form>
+                </div>
+        </div>
+    </nav>
+    <div class="description">
+        <h1 id="about"><em>This is the account page for {{user.first_name}} {{user.last_name}}</em></h1>
+        <p id="p">Below you will see a table of all the cocktails that {{user.first_name}} has created!</p>
+        <p id="p"><a href="/account/update">Please click this link here</a> if you'd like to updated your account information!</p>
+    </div>
+    <div>
+        <table class="table table-hover table-bordered user-table">
+            <thead class="table-info">
+                <tr>
+                    <th scope="col">Name of Cocktail:</th>
+                    <th scope="col">Main Spirit:</th>
+                    <th scope="col">Brief Description</th>
+                    <th scope="col">Ingredients</th>
+                    <th scope="col">Instructions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for drink in drinks %}
+                <tr>
+                    <th><a href="/show/{{drink.id}}">{{drink.name}}</a></th>
+                    <td>{{drink.spirit}}</td>
+                    <td>{{drink.brief_description}}</td>
+                    <td>{{drink.ingredient}}</td>
+                    <td>{{drink.instruction}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>

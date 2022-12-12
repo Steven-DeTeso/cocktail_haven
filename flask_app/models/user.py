@@ -64,6 +64,29 @@ class User:
         return is_valid
 
     @staticmethod
+    def validate_user_update(form_data:dict) -> bool:
+        is_valid = True
+
+        if len(form_data.get('first_name')) <= 2: 
+            flash("Please be sure to fill in your first name!", 'register')
+            is_valid = False
+
+        if len(form_data.get('last_name')) <= 2:
+            flash("Please be sure to fill in your last name!", 'register')
+
+
+        if len(form_data.get('password')) < 8:
+            flash("The password you entered isn't long enough, plase make it at least 8 characters!", 'register')
+            is_valid = False
+
+        if form_data.get('password') != form_data.get('confirm_password'):
+            flash("The confirmed password didn't match the password you entered", 'register')
+            is_valid = False
+
+
+        return is_valid
+
+    @staticmethod
     def validate_user_login(form_data:dict) -> bool:
         is_valid = True
         is_valid_email = True
@@ -131,7 +154,7 @@ class User:
     def update_user(cls, data):
         query = """
         UPDATE users 
-        SET first_name = %(first_name)s, last_name = %(last_name)s, email = %(email)s, password = %(password)s
+        SET first_name = %(first_name)s, last_name = %(last_name)s, password = %(password)s, updated_at = NOW()
         WHERE id = %(id)s;
         """
         return connectToMySQL(db).query_db(query, data)

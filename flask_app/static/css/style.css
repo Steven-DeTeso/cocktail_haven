@@ -31,6 +31,7 @@
     font-weight: bold;
     background-color: #f7d6d9;
     list-style: none;
+    margin-left: -20px;
 }
 
 .click {
@@ -71,6 +72,10 @@ nav {
     padding: 15px;
     margin-top: 15px;
     border-radius: 5px;
+}
+
+.description > #p {
+    text-align: center;
 }
 
 #about {
@@ -135,4 +140,10 @@ textarea {
 
 #searchbox{
     width: 300px;
+}
+
+.user-table{
+    background-color: #f8f8ff;
+    border-radius: 5px;
+    margin-top: 20px;
 }
