@@ -66,7 +66,7 @@ nav {
 }
 
 .description{
-    width: 70%;
+    width: 60%;
     margin: auto;
     background-color: ghostwhite;
     padding: 15px;
@@ -83,16 +83,16 @@ nav {
 }
 
 .main-section {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        align-content: flex-start;
-        align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
 }
 
 .container {
-    height: 2000px;
+    height: 100vh;
     background-image: url("../imgs/bg_bar.jpg");
 }
 
@@ -151,4 +151,15 @@ textarea {
     background-color: #f8f8ff;
     border-radius: 5px;
     margin-top: 20px;
+}
+
+/* CSS styles for the footer */
+footer {
+    background: #4AC29A;
+    background: -webkit-linear-gradient(to right, #BDFFF3, #4AC29A);
+    background: linear-gradient(to right, #BDFFF3, #4AC29A); 
+    border-radius: 10px;
+    color: black;
+    padding: 10px;
+    text-align: center;
 }
