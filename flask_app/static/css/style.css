@@ -6,17 +6,25 @@
 }
 
 .login, .register{
-    margin-top: 30px;
+    margin: 50px auto;
     justify-content: space-between;
     background-color: white;
     padding: 20px;
     border: solid 2px black;
     border-radius: 5%;
+    background: #4AC29A;
+    background: -webkit-linear-gradient(to right, #BDFFF3, #4AC29A);
+    background: linear-gradient(to right, #BDFFF3, #4AC29A);
+}
+
+.login > h1, .register > h1{
+    text-align: center;
 }
 
 #login-reg{
     background-image: url("../imgs/back_bar.jpg");
     background-size: cover;
+    max-height: fit-content;
 }
 
 .login > li, .register > li {
@@ -50,6 +58,12 @@
     font-size: 5em;
 }
 
+#cocktail-name{
+    font-family: Corinthia;
+    font-size: 3em;
+}
+
+
 nav {
     background: #4AC29A;
     background: -webkit-linear-gradient(to right, #BDFFF3, #4AC29A);
@@ -68,7 +82,7 @@ nav {
 .description{
     width: 60%;
     margin: auto;
-    background-color: ghostwhite;
+    background-color: white;
     padding: 15px;
     margin-top: 15px;
     border-radius: 5px;
@@ -82,6 +96,10 @@ nav {
     text-align: center;
 }
 
+#spirit{
+    margin-left: -195px;
+}
+
 .main-section {
     display: flex;
     flex-direction: row;
@@ -93,7 +111,7 @@ nav {
 }
 
 .container {
-    height: 100vh;
+    min-height: 1238px;
     background-image: url("../imgs/bg_bar.jpg");
 }
 

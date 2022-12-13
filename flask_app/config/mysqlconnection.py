@@ -1,6 +1,5 @@
 import pymysql.cursors
 # this class will give us an instance of a connection to our database
-
 # THIS FILE NEEDS TO BE IN HERE LIKE THIS TO CONNECT TO MY LOCAL DATABASE
 
 class MySQLConnection:

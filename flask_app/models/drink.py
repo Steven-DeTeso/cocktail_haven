@@ -73,7 +73,8 @@ class Drink:
         FROM drinks
         JOIN users
         ON users.id 
-        WHERE drinks.user_id = users.id;
+        WHERE drinks.user_id = users.id
+        ORDER BY drinks.created_at ASC;
         """
         results = connectToMySQL(db).query_db(query)
         drinks = []
@@ -117,7 +118,7 @@ class Drink:
         return drinks
 
     @classmethod
-    def update_drinks(cls, data):
+    def update_drink(cls, data):
         query = """
         UPDATE drinks
         SET name = %(name)s, spirit = %(spirit)s, brief_description = %(brief_description)s, ingredient = %(ingredient)s, instruction = %(instruction)s, updated_at = NOW()

@@ -12,27 +12,27 @@
     <nav class="navbar navbar-expand-xl navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="/dashboard">Cocktail Haven</a>
-                <div class="collapse navbar-collapse show" id="navbarBasic">
-                    <ul class="navbar-nav me-auto mb-2 mb-xl-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/create/drink">Add a Cocktail</a>
-                    </li>
+            <div class="collapse navbar-collapse show" id="navbarBasic">
+                <ul class="navbar-nav me-auto mb-2 mb-xl-0">
                     <li class="nav-item">
                         <a class="nav-link active" href="/account">My Account</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/create/drink">Add a Cocktail</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/log_out">Logout</a>
                     </li>
-                    </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" oninput="liveSearch()" id="searchbox" placeholder="Search" aria-label="Search">
-                    </form>
-                </div>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-5" type="search" oninput="liveSearch()" id="searchbox" placeholder="Search a spirit" aria-label="Search">
+                </form>
+            </div>
         </div>
     </nav>
     <div class="description">
         <h1 id="about"><em>Welcome to the Cocktail Haven website!</em></h1>
-        <p>This is a database of cocktails that have been uploaded by our users. To add your own cocktail to the database, use the "Add a Cocktail" button in the navigation bar at the top of the page.</p>
+        <p>This is a database of cocktails that have been uploaded by our users. To add your own cocktail to the database, use the "Add a Cocktail" link in the navigation bar at the top of the page.</p>
         <p>Click on the name of the cocktail in the card header below to see all the ingredients and mixing instructions for each drink.</p>
         <p>You can also filter the cocktails by main spirit with the search bar if you like. The options are: "Vodka", "Gin", "Whiskey", "Tequila", "Mezcal", "Rum", "Brandy".</p>
         <button class="btn btn-success" onclick="hideDescription()">Got it!</button>
@@ -40,23 +40,24 @@
     <div class="main-section">
             {% for drink in drinks %}
             <div class="card col-md-4 col-lg-4" onmouseover="addHoverEffect()">
-                <h3 class="card-header"><a href="/show/{{drink.id}}">{{drink.name}}</a></h3>
+                <h3 class="card-header" id="cocktail-name"><a href="/show/{{drink.id}}">{{drink.name}}</a></h3>
                 <div class="card-body">
+                    <div class="row">
+                        <p class="card-text col"><strong>Main Spirit:</strong></p>
+                        <p class="card-text col" id="spirit">{{drink.spirit}}</p>
+                    </div>
                     <p class="card-text"><strong>Brief Description:</strong></p>
                     <p class="card-text">{{drink.brief_description}}</p>
-                    <p class="card-text"><strong>Main Spirit:</strong></p>
-                    <p class="card-text">{{drink.spirit}}</p>
+                    <!-- <p class="card-text"><strong>Main Spirit:</strong></p>
+                    <p class="card-text">{{drink.spirit}}</p> -->
                     <p class="card-title"><em>Uploaded by: <a href="/user/{{drink.user.id}}">{{drink.user.first_name}} {{drink.user.last_name}}</a></em></p>
                     {% if drink.user.id == session['user_id']['id'] %}
-                    <a class="btn btn-secondary" href="/edit/{{drink.id}}">Edit</a> <a class="btn btn-danger" href="/delete/{{drink.id}}">Delete</a>
+                    <a class="btn btn-warning" href="/edit/{{drink.id}}">Edit</a> <a class="btn btn-danger" href="/delete/{{drink.id}}">Delete</a>
                     {% endif %}
                 </div>
             </div>
             {% endfor %}
     </div>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    <footer>
-        <p>Copyright 2022 by Steven DeTeso. All rights reserved.</p>
-    </footer>
 </body>
 </html>

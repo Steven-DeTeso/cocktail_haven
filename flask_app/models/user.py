@@ -21,11 +21,11 @@ class User:
         is_valid = True
         is_valid_email = True
 
-        if len(form_data.get('first_name')) <= 2: 
+        if len(form_data.get('first_name')) < 2: 
             flash("Please be sure to fill in your first name!", 'register')
             is_valid = False
 
-        if len(form_data.get('last_name')) <= 2:
+        if len(form_data.get('last_name')) < 2:
             flash("Please be sure to fill in your last name!", 'register')
 
         if len(form_data.get('email')) <= 0:
@@ -60,20 +60,19 @@ class User:
             flash("Please click the button to verify you are indeed a human!", 'register')
             is_valid = False
 
-
         return is_valid
 
     @staticmethod
     def validate_user_update(form_data:dict) -> bool:
         is_valid = True
 
-        if len(form_data.get('first_name')) <= 2: 
+        if len(form_data.get('first_name')) < 2: 
             flash("Please be sure to fill in your first name!", 'update')
             is_valid = False
 
-        if len(form_data.get('last_name')) <= 2:
+        if len(form_data.get('last_name')) < 2:
             flash("Please be sure to fill in your last name!", 'update')
-
+            is_valid = False
 
         if len(form_data.get('password')) < 8:
             flash("The password you entered isn't long enough, plase make it at least 8 characters!", 'update')
@@ -115,17 +114,17 @@ class User:
         return is_valid
 
     @classmethod
-    def get_all(cls, data):
-        query = """
-        SELECT * FROM users;
-        """
-        return connectToMySQL(db).query_db(query, data)
-
-    @classmethod
     def save(cls, data):
         query = """
         INSERT INTO users (first_name, last_name, email, password, created_at, updated_at) 
         VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s, NOW(), NOW());
+        """
+        return connectToMySQL(db).query_db(query, data)
+
+    @classmethod
+    def get_all(cls, data):
+        query = """
+        SELECT * FROM users;
         """
         return connectToMySQL(db).query_db(query, data)
 

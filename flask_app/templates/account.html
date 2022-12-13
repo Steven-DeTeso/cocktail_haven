@@ -41,6 +41,7 @@
                     <th scope="col">Brief Description</th>
                     <th scope="col">Ingredients</th>
                     <th scope="col">Instructions</th>
+                    <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,11 +52,11 @@
                     <td>{{drink.brief_description}}</td>
                     <td>{{drink.ingredient}}</td>
                     <td>{{drink.instruction}}</td>
+                    <td><a class="btn btn-danger mt-4" href="/delete/{{drink.id}}">Delete</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
-    
 </body>
 </html>

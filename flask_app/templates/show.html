@@ -15,6 +15,9 @@
             <div class="collapse navbar-collapse show" id="navbarBasic">
                 <ul class="navbar-nav me-auto mb-2 mb-xl-0">
                 <li class="nav-item">
+                    <a class="nav-link active" href="/account">My Account</a>
+                </li> 
+                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/create/drink">Add a Cocktail</a>
                 </li>
                 <li class="nav-item">
@@ -29,12 +32,12 @@
     </nav>
     <div class="createDrink">
         <h2 id="cocktail-name">{{drink.name}} Cocktail</h2>
-        <p><strong>Spirit:</strong> {{drink.spirit}}</p>
+        <p><strong>Main Spirit:</strong> {{drink.spirit}}</p>
         <p><strong>Ingredients:</strong> {{drink.ingredient}}</p>
         <p><strong>Mixing Instructions:</strong> {{drink.instruction}}</p>
         <p><em>Created by: <a href="/user/{{drink.user_id}}">{{drink.user}}</a></em></p>
         {% if session['user_id']['id'] == drink.user_id %}
-        <a class="btn btn-warning" href="/edit/{{drink.id}}">Edit</a>
+        <a class="btn btn-warning" href="/edit/{{drink.id}}">Edit</a> <a class="btn btn-danger" href="/delete/{{drink.id}}">Delete</a></td>
         {% endif%}
     </div>
 </body>

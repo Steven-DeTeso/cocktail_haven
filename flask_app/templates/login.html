@@ -14,7 +14,7 @@
 <body id="login-reg">
     <div class="container-fluid">
         <div class="row justify-content-around">
-            <div class="col-md-4 login">
+            <div class="col-sm-12 col-md-8 col-lg-6 col-xl-4 col-xxl-3 login">
                 <h1>Login</h1>
                 {% with messages = get_flashed_messages(category_filter=['login']) %}
                     {% if messages %}
@@ -40,5 +40,8 @@
             </div>
         </div>
     </div>
+    <footer>
+        <p>Copyright 2022 by Steven DeTeso. All rights reserved.</p>
+    </footer>
 </body>
 </html>

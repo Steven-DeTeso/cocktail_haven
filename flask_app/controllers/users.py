@@ -2,12 +2,14 @@ from flask_app import app, bcrypt
 from flask_app.models.user import User
 from flask_app.models.drink import Drink
 from flask import render_template, request, redirect, session
-# app.routes 
 
+
+# FIRST PAGE, r=render template function
 @app.route('/')
 def r_home_page():
     return render_template('login.html')
 
+# REGISTER f=form data process
 @app.route('/register')
 def r_register_page():
     return render_template('register.html')
@@ -23,9 +25,11 @@ def f_register_user():
         }
         User.save(data)
         user_in_db = User.get_one_for_login(data)
-        session['user_id'] = user_in_db[0] #steps in to just grab dict:object from list,hench [0]
+        session['user_id'] = user_in_db[0]
         return redirect('/dashboard')
     return redirect('/register')
+
+# LOGIN
 
 @app.route('/login/user', methods = ['POST'])
 def f_login_user():
@@ -57,10 +61,12 @@ def r_account():
 def r_account_update():
     if 'user_id' not in session:
         return redirect('/log_out')
-    return render_template('user_updated.html', user = session['user_id'])
+    return render_template('user_update.html', user = session['user_id'])
 
 @app.route('/account/update/user', methods=['POST'])
 def f_rd_user_account_update():
+    if 'user_id' not in session:
+        return redirect('/log_out')
     if User.validate_user_update(request.form):
         data = {
         'id': request.form.get('id'),
@@ -71,7 +77,7 @@ def f_rd_user_account_update():
         }
         User.update_user(data)
         return redirect('/dashboard')
-    return render_template('/user_updated.html')
+    return render_template('/user_update.html')
 
 @app.route('/user/<int:id>')
 def r_user_account(id):

@@ -8,25 +8,28 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Create Drink</title>
 </head>
-<nav class="navbar navbar-expand-xl navbar-light bg-light">
-        <div class="container-fluid">
-        <a class="navbar-brand" href="/dashboard">Cocktail Haven</a>
-        <div class="collapse navbar-collapse show" id="navbarBasic">
-            <ul class="navbar-nav me-auto mb-2 mb-xl-0">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/create/drink">Add a Cocktail</a>
-            </li>
-            <li class="nav-item">
-                <a href="/dashboard" class="nav-link active" aria-current="page" >Back to the Dashboard</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/log_out">Logout</a>
-            </li>
-            </ul>
-        </div>
-        </div>
-</nav>
 <body class="container">
+    <nav class="navbar navbar-expand-xl navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/dashboard">Cocktail Haven</a>
+            <div class="collapse navbar-collapse show" id="navbarBasic">
+                <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+                <li class="nav-item">
+                        <a class="nav-link active" href="/account">My Account</a>
+                </li>    
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/create/drink">Add a Cocktail</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/dashboard" class="nav-link active" aria-current="page" >Back to the Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/log_out">Logout</a>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="createDrink">
         {% with messages = get_flashed_messages(category_filter=['drink']) %}
             {% if messages %}
@@ -39,9 +42,12 @@
         {% endwith %}
         <form action="/create" method="POST">
             <div class="row">
+                <h2 class="ms-5">Create your new cocktail here!</h2>
+            </div>
+            <div class="row">
                 <div class="col-md-12">
                     <label for="name" class="form-label">Name:</label>
-                    <input type="text" name="name" class="form-control">
+                    <input type="text" name="name" class="form-control" placeholder="Name of the cocktail:">
                 </div>
             </div>
             <div class="row">
@@ -63,8 +69,8 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <label for="brief_description">Brief Description (one to two sentences about this cocktail):</label>
-                    <textarea name="brief_description" class="form-control" style="height: 70px;"></textarea>
+                    <label for="brief_description">Brief Description:</label>
+                    <textarea name="brief_description" class="form-control" style="height: 70px;" placeholder="One or two sentences to describe this drink:"></textarea>
                 </div>
             </div>
             <div class="row">
@@ -80,7 +86,7 @@
                 </div>
             </div>
             <input type="hidden" name="user_id" value="{{session['user_id']['id']}}">
-            <button type="submit" class="btn btn-success mt-2">Create</button>
+            <button type="submit" class="btn btn-success mt-4">Create</button>
         </form>
     </div>
 </body>
