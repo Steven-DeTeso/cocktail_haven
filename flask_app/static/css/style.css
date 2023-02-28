@@ -190,3 +190,24 @@ footer {
 footer > p {
     margin: 0px;
 }
+
+@media screen and (max-width: 600px) { 
+    .container {
+        width: fit-content;
+    }
+    .navbar-brand {
+        font-size: 4rem;
+    }
+}
+
+@media screen and (max-width: 300px) { 
+    .container {
+        width: fit-content;
+    }
+    .navbar {
+        width: fit-content;
+    }
+    .navbar-brand {
+        font-size: 3rem;
+    }
+}
