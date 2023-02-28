@@ -19,7 +19,7 @@
 
 ## About The Project
 
-![Screen Shot]((/relative/path/to/cocktail_haven/flask_app/static/imgs/CH_desktop.png?raw=True))
+https://github.com/Steven-DeTeso/cocktail_haven/blob/c455db9da83e9d6032e71efb68603e7329acd3f8/flask_app/static/imgs/CH_desktop.png
 
 This project was a play on a recipes application that allowed users to created accounts and login to an online database. Once their account was created, they could upload cocktail recipes which would be populated in the main homepage.
 
